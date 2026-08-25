@@ -1,8 +1,8 @@
-package com.example.jobapptracker.application;
+package com.example.jobapptracker.application.dto;
 
 import java.time.LocalDateTime;
 
-public record CreateJobApplicationRequest (
+public record UpdateJobApplicationRequest(
         String company,
         String role,
         LocalDateTime appliedAt,
@@ -10,4 +10,5 @@ public record CreateJobApplicationRequest (
         String resumeVersion,
         String resumeUrl,
         String companyUrl
-) { }
+) {
+}

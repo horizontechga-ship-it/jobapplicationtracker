@@ -87,6 +87,25 @@ Invoke-RestMethod `
     -Body $body |
     ConvertTo-Json -Depth 10
 ```
+## UPDATE an application
+```powershell
+$body = @{
+    company       = "Acme Corporation"
+    role          = "Senior Java Developer"
+    appliedAt     = "2026-08-24T22:45:00"
+    resumeName    = "Java Backend Resume"
+    resumeVersion = "spring-26-v2"
+    resumeUrl     = "https://docs.google.com/example-resume"
+    companyUrl    = "https://example.com"
+} | ConvertTo-Json
+
+Invoke-RestMethod `
+    -Uri "http://localhost:8080/applications/4" `
+    -Method Put `
+    -ContentType "application/json" `
+    -Body $body |
+    ConvertTo-Json -Depth 10
+```
 
 ## Connect to PostgreSQL
 

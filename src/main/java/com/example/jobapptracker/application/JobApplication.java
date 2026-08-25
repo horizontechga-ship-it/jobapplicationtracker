@@ -59,6 +59,24 @@ public class JobApplication {
         this.companyUrl = companyUrl;
     }
 
+    public void update(
+            String company,
+            String role,
+            LocalDateTime appliedAt,
+            String resumeName,
+            String resumeVersion,
+            String resumeUrl,
+            String companyUrl) {
+
+        this.company = company;
+        this.role = role;
+        this.appliedAt = appliedAt;
+        this.resumeName = resumeName;
+        this.resumeVersion = resumeVersion;
+        this.resumeUrl = resumeUrl;
+        this.companyUrl = companyUrl;
+    }
+
     public void addInterview(Interview interview) {
         interviews.add(interview);
     }

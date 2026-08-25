@@ -106,6 +106,12 @@ Invoke-RestMethod `
     -Body $body |
     ConvertTo-Json -Depth 10
 ```
+## DELETE an application
+```powershell
+Invoke-RestMethod `
+    -Uri "http://localhost:8080/applications/4" `
+    -Method Delete
+```
 
 ## Connect to PostgreSQL
 

@@ -33,7 +33,7 @@ public class JobApplicationController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public JobApplicationResponse create(@RequestBody CreateJobApplicationRequest request){
+    public JobApplicationResponse create(@RequestBody CreateJobApplicationRequest request) {
         return service.create(request);
     };
 
@@ -43,10 +43,8 @@ public class JobApplicationController {
         return service.update(id, request);
     }
 
-
-
-
-
-
-
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        service.delete(id);
+    }
 }

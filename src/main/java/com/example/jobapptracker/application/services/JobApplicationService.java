@@ -8,7 +8,10 @@ import com.example.jobapptracker.application.JobApplicationMapper;
 import com.example.jobapptracker.application.dto.UpdateJobApplicationRequest;
 import com.example.jobapptracker.exceptions.JobApplicationNotFoundException;
 import jakarta.transaction.Transactional;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
 import java.util.List;
 
 
@@ -69,4 +72,14 @@ public class JobApplicationService {
 
         return JobApplicationMapper.toResponse(application);
     }
+
+    @Transactional
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(Long id) {
+        var application = repository.findById(id)
+                .orElseThrow(() -> new JobApplicationNotFoundException(id));
+        repository.delete(application);
+    }
+
+
 }

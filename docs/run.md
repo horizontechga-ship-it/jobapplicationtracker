@@ -1,0 +1,127 @@
+# Job Application Tracker --- PowerShell Commands
+
+A compact reference for the PowerShell commands used while developing
+and testing the backend.
+
+## Compile
+
+Run from the project root:
+
+``` powershell
+.\mvnw.cmd clean compile
+```
+
+## Run Spring Boot
+
+Set the database password for the current PowerShell session, then run
+the application:
+
+``` powershell
+
+.\mvnw.cmd spring-boot:run
+```
+
+## GET all applications
+
+``` powershell
+Invoke-RestMethod `
+    -Uri "http://localhost:8080/applications" `
+    -Method Get |
+    ConvertTo-Json -Depth 10
+```
+
+## GET one application
+
+Replace `1` with the desired application ID:
+
+``` powershell
+Invoke-RestMethod `
+    -Uri "http://localhost:8080/applications/1" `
+    -Method Get |
+    ConvertTo-Json -Depth 10
+```
+
+## GET and throw error
+```powershell
+try {
+    Invoke-RestMethod `
+        -Uri "http://localhost:8080/applications/999999" `
+        -Method Get
+}
+catch {
+    $_ | Format-List *
+}
+```
+with error JSON
+```powershell
+try {
+    Invoke-RestMethod `
+        -Uri "http://localhost:8080/applications/999999" `
+        -Method Get
+}
+catch {
+    $response = $_.Exception.Response
+    $reader = New-Object System.IO.StreamReader($response.GetResponseStream())
+    $reader.ReadToEnd()
+}
+```
+
+
+## POST a new application
+
+``` powershell
+$body = @{
+    company    = "Acme Corporation"
+    role       = "Java Developer"
+    appliedAt  = "2026-08-24T12:00:00"
+    resumeName = "Java Resume"
+    resumeUrl  = "https://example.com/resume"
+    companyUrl = "https://example.com"
+} | ConvertTo-Json
+
+Invoke-RestMethod `
+    -Uri "http://localhost:8080/applications" `
+    -Method Post `
+    -ContentType "application/json" `
+    -Body $body |
+    ConvertTo-Json -Depth 10
+```
+
+## Connect to PostgreSQL
+
+``` powershell
+psql -U jobapptracker -d jobapptracker
+```
+
+Useful commands after entering `psql`:
+
+``` text
+\dt
+\d job_application
+\d interview
+SELECT * FROM job_application;
+SELECT * FROM interview;
+\q
+```
+
+## PostgreSQL client check
+
+``` powershell
+psql --version
+```
+
+## Java/JDK checks
+
+``` powershell
+java --version
+javac -version
+javap -version
+```
+
+## Inspect the compiled JobApplication class
+
+Run after compiling:
+
+``` powershell
+javap -p .\target\classes\com\example\jobapptracker\application\JobApplication.class
+```

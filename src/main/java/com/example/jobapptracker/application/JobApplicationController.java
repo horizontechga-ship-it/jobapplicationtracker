@@ -1,0 +1,44 @@
+package com.example.jobapptracker.application;
+
+
+import com.example.jobapptracker.application.dto.JobApplicationResponse;
+import com.example.jobapptracker.application.services.JobApplicationService;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/applications")
+public class JobApplicationController {
+
+
+    private final JobApplicationService service;
+
+    public JobApplicationController(JobApplicationService  service){
+        this.service = service;
+    }
+
+    @GetMapping("/{id}")
+    public JobApplicationResponse getById(@PathVariable Long id) {
+        return service.getById(id);
+    }
+
+    @GetMapping
+    public List<JobApplicationResponse> getAll() {
+        return service.getAll();
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public JobApplicationResponse create(@RequestBody CreateJobApplicationRequest request){
+
+        return service.create(request);
+    };
+
+
+
+
+
+
+}

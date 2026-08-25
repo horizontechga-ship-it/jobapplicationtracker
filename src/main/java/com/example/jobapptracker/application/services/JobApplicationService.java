@@ -7,6 +7,7 @@ import com.example.jobapptracker.application.JobApplicationRepository;
 import com.example.jobapptracker.application.JobApplicationMapper;
 import com.example.jobapptracker.application.dto.UpdateJobApplicationRequest;
 import com.example.jobapptracker.exceptions.JobApplicationNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -50,6 +51,7 @@ public class JobApplicationService {
                 .toList();
     }
 
+    @Transactional
     public JobApplicationResponse update(Long id, UpdateJobApplicationRequest request) {
 
         var application = repository.findById(id)
@@ -65,8 +67,6 @@ public class JobApplicationService {
                 request.companyUrl()
         );
 
-        var savedApplication = repository.save(application);
-
-        return JobApplicationMapper.toResponse(savedApplication);
+        return JobApplicationMapper.toResponse(application);
     }
 }

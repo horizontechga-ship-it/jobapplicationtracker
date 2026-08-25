@@ -7,6 +7,7 @@ public record CreateJobApplicationRequest (
         String role,
         LocalDateTime appliedAt,
         String resumeName,
+        String resumeVersion,
         String resumeUrl,
         String companyUrl
 ) { }

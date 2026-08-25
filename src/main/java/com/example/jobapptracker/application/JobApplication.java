@@ -28,6 +28,8 @@ public class JobApplication {
 
     private String resumeName;
 
+    private String resumeVersion;
+
     private String resumeUrl;
 
     private String companyUrl;
@@ -44,6 +46,7 @@ public class JobApplication {
             String role,
             LocalDateTime appliedAt,
             String resumeName,
+            String resumeVersion,
             String resumeUrl,
             String companyUrl) {
 
@@ -51,6 +54,7 @@ public class JobApplication {
         this.role = role;
         this.appliedAt = appliedAt;
         this.resumeName = resumeName;
+        this.resumeVersion = resumeVersion;
         this.resumeUrl = resumeUrl;
         this.companyUrl = companyUrl;
     }

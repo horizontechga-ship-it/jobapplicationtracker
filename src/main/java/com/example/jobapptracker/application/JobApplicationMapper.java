@@ -24,6 +24,7 @@ public final class JobApplicationMapper {
                 application.getRole(),
                 application.getAppliedAt(),
                 application.getResumeName(),
+                application.getResumeVersion(),
                 application.getResumeUrl(),
                 application.getCompanyUrl(),
                 interviews

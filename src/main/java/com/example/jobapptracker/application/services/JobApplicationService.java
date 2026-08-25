@@ -25,6 +25,7 @@ public class JobApplicationService {
                 request.role(),
                 request.appliedAt(),
                 request.resumeName(),
+                request.resumeVersion(),
                 request.resumeUrl(),
                 request.companyUrl()
         );

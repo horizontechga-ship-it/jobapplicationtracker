@@ -71,12 +71,13 @@ catch {
 
 ``` powershell
 $body = @{
-    company    = "Acme Corporation"
-    role       = "Java Developer"
-    appliedAt  = "2026-08-24T12:00:00"
-    resumeName = "Java Resume"
-    resumeUrl  = "https://example.com/resume"
-    companyUrl = "https://example.com"
+    company       = "Acme Corporation"
+    role          = "Java Developer"
+    appliedAt     = "2026-08-24T22:45:00"
+    resumeName    = "Java Backend Resume"
+    resumeVersion = "spring-26"
+    resumeUrl     = "https://docs.google.com/example-resume"
+    companyUrl    = "https://example.com"
 } | ConvertTo-Json
 
 Invoke-RestMethod `

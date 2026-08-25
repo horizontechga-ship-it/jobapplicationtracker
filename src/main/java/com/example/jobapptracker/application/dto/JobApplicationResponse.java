@@ -10,6 +10,7 @@ public record JobApplicationResponse(
         String role,
         LocalDateTime appliedAt,
         String resumeName,
+        String resumeVersion,
         String resumeUrl,
         String companyUrl,
         List<InterviewResponse> interviews

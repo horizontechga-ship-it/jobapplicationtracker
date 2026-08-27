@@ -1,13 +1,11 @@
 package com.example.jobapptracker.application.services;
 
 import com.example.jobapptracker.application.Interview;
-import com.example.jobapptracker.application.dto.CreateInterviewRequest;
-import com.example.jobapptracker.application.dto.CreateJobApplicationRequest;
-import com.example.jobapptracker.application.dto.JobApplicationResponse;
+import com.example.jobapptracker.application.dto.*;
 import com.example.jobapptracker.application.JobApplication;
 import com.example.jobapptracker.application.JobApplicationRepository;
 import com.example.jobapptracker.application.JobApplicationMapper;
-import com.example.jobapptracker.application.dto.UpdateJobApplicationRequest;
+import com.example.jobapptracker.exceptions.InterviewNotFoundException;
 import com.example.jobapptracker.exceptions.JobApplicationNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.http.HttpStatus;
@@ -15,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.List;
+import java.util.Objects;
 
 
 @Service
@@ -102,6 +101,38 @@ public class JobApplicationService {
 
         //The generated id happens after insert, so we flush before returning
         repository.flush();
+
+        return JobApplicationMapper.toResponse(application);
+    }
+
+    @Transactional
+    public JobApplicationResponse updateInterview(
+            Long applicationId,
+            Long interviewId,
+            UpdateInterviewRequest request) {
+
+        var application = repository.findById(applicationId)
+                .orElseThrow(() ->
+                        new JobApplicationNotFoundException(applicationId));
+
+        var interview = application.getInterviews()
+                .stream()
+                .filter(existingInterview ->
+                        Objects.equals(
+                                existingInterview.getId(),
+                                interviewId
+                        ))
+                .findFirst()
+                .orElseThrow(() ->
+                        new InterviewNotFoundException(
+                                interviewId,
+                                application.getId()
+                        ));
+
+        interview.update(
+                request.scheduledAt(),
+                request.notes()
+        );
 
         return JobApplicationMapper.toResponse(application);
     }

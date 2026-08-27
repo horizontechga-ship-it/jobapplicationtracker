@@ -28,6 +28,24 @@ public class GlobalExceptionHandler {
         return problem;
     }
 
+    @ExceptionHandler(JobApplicationNotFoundException.class)
+    public ProblemDetail handleInterviewNotFound(
+            InterviewNotFoundException exception) {
+
+        var problem = ProblemDetail.forStatusAndDetail(
+                HttpStatus.NOT_FOUND,
+                exception.getMessage()
+        );
+
+        problem.setTitle("Job application not found");
+        problem.setProperty(
+                "applicationId",
+                exception.getApplicationId()
+        );
+
+        return problem;
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ProblemDetail handleValidationFailure(
             MethodArgumentNotValidException exception) {

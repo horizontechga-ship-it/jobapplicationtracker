@@ -1,6 +1,8 @@
 package com.example.jobapptracker.exceptions;
 
+import lombok.Getter;
 
+@Getter
 public class JobApplicationNotFoundException extends RuntimeException {
 
     private final Long applicationId;
@@ -10,7 +12,5 @@ public class JobApplicationNotFoundException extends RuntimeException {
         this.applicationId = applicationId;
     }
 
-    public Long getApplicationId() {
-        return applicationId;
-    }
+
 }

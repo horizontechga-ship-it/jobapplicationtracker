@@ -30,4 +30,10 @@ public class Interview {
         this.notes = notes;
         this.jobApplication = jobApplication;
     }
+
+    public void update(LocalDateTime scheduledAt, String notes) {
+
+        this.scheduledAt = scheduledAt;
+        this.notes = notes;
+    }
 }

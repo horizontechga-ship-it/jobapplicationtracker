@@ -1,10 +1,7 @@
 package com.example.jobapptracker.application;
 
 
-import com.example.jobapptracker.application.dto.CreateInterviewRequest;
-import com.example.jobapptracker.application.dto.CreateJobApplicationRequest;
-import com.example.jobapptracker.application.dto.JobApplicationResponse;
-import com.example.jobapptracker.application.dto.UpdateJobApplicationRequest;
+import com.example.jobapptracker.application.dto.*;
 import com.example.jobapptracker.application.services.JobApplicationService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -46,6 +43,7 @@ public class JobApplicationController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
 
         service.delete(id);
@@ -58,5 +56,18 @@ public class JobApplicationController {
             @Valid @RequestBody CreateInterviewRequest request) {
 
         return service.addInterview(applicationId, request);
+    }
+
+    @PutMapping("/{applicationId}/interviews/{interviewId}")
+    public JobApplicationResponse updateInterview(
+            @PathVariable Long applicationId,
+            @PathVariable Long interviewId,
+            @Valid @RequestBody UpdateInterviewRequest request) {
+
+        return service.updateInterview(
+                applicationId,
+                interviewId,
+                request
+        );
     }
 }

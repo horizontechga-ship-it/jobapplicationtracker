@@ -9,8 +9,7 @@ public class InterviewNotFoundException extends RuntimeException{
     private final Long interviewId;
 
     public InterviewNotFoundException(Long applicationId, Long interviewId) {
-        super("For job application" + applicationId
-                + "Interview not found with id: " + interviewId);
+        super("Interview with id " + interviewId + " not found for job application " + applicationId);
         this.applicationId = applicationId;
         this.interviewId = interviewId;
     }

@@ -75,7 +75,6 @@ public class JobApplicationService {
     }
 
     @Transactional
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(Long id) {
         var application = repository.findById(id)
                 .orElseThrow(() -> new JobApplicationNotFoundException(id));

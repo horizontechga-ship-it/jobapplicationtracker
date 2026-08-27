@@ -37,7 +37,7 @@ public class GlobalExceptionHandler {
                 exception.getMessage()
         );
 
-        problem.setTitle("Job application not found");
+        problem.setTitle("Interview not found");
         problem.setProperty(
                 "applicationId",
                 exception.getApplicationId()

@@ -34,7 +34,7 @@ public class JobApplicationController {
     @ResponseStatus(HttpStatus.CREATED)
     public JobApplicationResponse create(@Valid @RequestBody CreateJobApplicationRequest request) {
         return service.create(request);
-    };
+    }
 
     @PutMapping("/{id}")
     public JobApplicationResponse update(@PathVariable Long id,

@@ -113,6 +113,24 @@ Invoke-RestMethod `
     -Method Delete
 ```
 
+## CREATE Interview Request 
+```powershell
+$body = @{
+    scheduledAt = "2026-09-02T14:30:00"
+    notes       = "Technical interview with engineering team"
+} | ConvertTo-Json
+
+Invoke-RestMethod `
+    -Uri "http://localhost:8080/applications/3/interviews" `
+    -Method Post `
+    -ContentType "application/json" `
+    -Body $body |
+    ConvertTo-Json -Depth 10
+```
+
+
+
+
 ## THROW 400 exception with JSON response
 ```powershell
 

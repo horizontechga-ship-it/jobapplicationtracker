@@ -1,6 +1,7 @@
 package com.example.jobapptracker.application;
 
 
+import com.example.jobapptracker.application.dto.CreateInterviewRequest;
 import com.example.jobapptracker.application.dto.CreateJobApplicationRequest;
 import com.example.jobapptracker.application.dto.JobApplicationResponse;
 import com.example.jobapptracker.application.dto.UpdateJobApplicationRequest;
@@ -46,6 +47,16 @@ public class JobApplicationController {
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
+
         service.delete(id);
+    }
+
+    @PostMapping("/{applicationId}/interviews")
+    @ResponseStatus(HttpStatus.CREATED)
+    public JobApplicationResponse addInterview(
+            @PathVariable Long applicationId,
+            @Valid @RequestBody CreateInterviewRequest request) {
+
+        return service.addInterview(applicationId, request);
     }
 }

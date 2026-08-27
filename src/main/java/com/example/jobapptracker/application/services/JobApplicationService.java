@@ -1,5 +1,7 @@
 package com.example.jobapptracker.application.services;
 
+import com.example.jobapptracker.application.Interview;
+import com.example.jobapptracker.application.dto.CreateInterviewRequest;
 import com.example.jobapptracker.application.dto.CreateJobApplicationRequest;
 import com.example.jobapptracker.application.dto.JobApplicationResponse;
 import com.example.jobapptracker.application.JobApplication;
@@ -79,6 +81,29 @@ public class JobApplicationService {
         var application = repository.findById(id)
                 .orElseThrow(() -> new JobApplicationNotFoundException(id));
         repository.delete(application);
+    }
+
+    @Transactional
+    public JobApplicationResponse addInterview(
+            Long applicationId,
+            CreateInterviewRequest request) {
+
+        var application = repository.findById(applicationId)
+                .orElseThrow(() ->
+                        new JobApplicationNotFoundException(applicationId));
+
+        var interview = new Interview(
+                request.scheduledAt(),
+                request.notes(),
+                application
+        );
+
+        application.addInterview(interview);
+
+        //The generated id happens after insert, so we flush before returning
+        repository.flush();
+
+        return JobApplicationMapper.toResponse(application);
     }
 
 

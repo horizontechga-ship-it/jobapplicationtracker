@@ -28,7 +28,7 @@ public class GlobalExceptionHandler {
         return problem;
     }
 
-    @ExceptionHandler(JobApplicationNotFoundException.class)
+    @ExceptionHandler(InterviewNotFoundException.class)
     public ProblemDetail handleInterviewNotFound(
             InterviewNotFoundException exception) {
 
@@ -41,6 +41,10 @@ public class GlobalExceptionHandler {
         problem.setProperty(
                 "applicationId",
                 exception.getApplicationId()
+        );
+        problem.setProperty(
+                "interviewId",
+                exception.getInterviewId()
         );
 
         return problem;

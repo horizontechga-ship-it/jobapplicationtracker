@@ -125,8 +125,8 @@ public class JobApplicationService {
                 .findFirst()
                 .orElseThrow(() ->
                         new InterviewNotFoundException(
-                                interviewId,
-                                application.getId()
+                                applicationId,
+                                interviewId
                         ));
 
         interview.update(

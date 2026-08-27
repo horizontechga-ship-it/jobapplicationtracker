@@ -113,6 +113,27 @@ Invoke-RestMethod `
     -Method Delete
 ```
 
+## THROW 400 exception with JSON response
+```powershell
+
+try {
+    Invoke-RestMethod `
+        -Uri "http://localhost:8080/applications" `
+        -Method Post `
+        -ContentType "application/json" `
+        -Body $body
+}
+catch {
+    $response = $_.Exception.Response
+    $reader = New-Object System.IO.StreamReader($response.GetResponseStream())
+    $json = $reader.ReadToEnd()
+
+    $json |
+        ConvertFrom-Json |
+        ConvertTo-Json -Depth 10
+}
+```
+
 ## Connect to PostgreSQL
 
 ``` powershell

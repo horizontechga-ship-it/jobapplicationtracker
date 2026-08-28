@@ -2,6 +2,7 @@ package com.horizontechga.jobapptracker.application.services;
 
 import com.horizontechga.jobapptracker.application.JobApplication;
 import com.horizontechga.jobapptracker.application.JobApplicationRepository;
+import com.horizontechga.jobapptracker.exceptions.JobApplicationNotFoundException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -42,5 +44,15 @@ class JobApplicationServiceTest {
 
         assertEquals("Acme Corp", response.company());
         assertEquals("Java Developer", response.role());
+    }
+
+    @Test
+    void getByIdThrowsWhenApplicationNotFound() {
+        when(repository.findById(1L))
+                .thenReturn(Optional.empty());
+        assertThrows(
+                JobApplicationNotFoundException.class,
+                () -> service.getById(1L)
+        );
     }
 }

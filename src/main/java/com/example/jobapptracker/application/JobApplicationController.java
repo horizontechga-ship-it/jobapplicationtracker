@@ -82,4 +82,15 @@ public class JobApplicationController {
                 interviewId
         );
     }
+
+    @GetMapping("/{applicationId}/interviews/{interviewId}")
+    public InterviewResponse getInterview(
+            @PathVariable Long applicationId,
+            @PathVariable Long interviewId) {
+
+        return service.getInterview(
+                applicationId,
+                interviewId
+        );
+    }
 }

@@ -162,5 +162,27 @@ public class JobApplicationService {
         application.removeInterview(interview);
     }
 
+    public InterviewResponse getInterview(
+            Long applicationId,
+            Long interviewId) {
+
+        var application = repository.findById(applicationId)
+                .orElseThrow(() ->
+                        new JobApplicationNotFoundException(applicationId));
+
+        var interview = application.getInterviews()
+                .stream()
+                .filter(existingInterview ->
+                        Objects.equals(existingInterview.getId(), interviewId))
+                .findFirst()
+                .orElseThrow(() ->
+                        new InterviewNotFoundException(
+                                applicationId,
+                                interviewId
+                        ));
+
+        return JobApplicationMapper.toResponse(interview);
+    }
+
 
 }

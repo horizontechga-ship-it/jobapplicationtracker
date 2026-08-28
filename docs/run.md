@@ -128,6 +128,14 @@ Invoke-RestMethod `
     ConvertTo-Json -Depth 10
 ```
 
+## GET Interview Request
+```powershell
+Invoke-RestMethod `
+    -Uri "http://localhost:8080/applications/3/interviews/1" `
+    -Method Get |
+    ConvertTo-Json -Depth 10
+```
+
 ## UPDATE Interview Request
 ```powershell
 Invoke-RestMethod `

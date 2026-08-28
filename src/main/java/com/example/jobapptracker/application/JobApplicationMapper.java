@@ -9,13 +9,10 @@ public final class JobApplicationMapper {
     }
 
     public static JobApplicationResponse toResponse(JobApplication application) {
+
         var interviews = application.getInterviews()
                 .stream()
-                .map(interview -> new InterviewResponse(
-                        interview.getId(),
-                        interview.getScheduledAt(),
-                        interview.getNotes()
-                ))
+                .map(JobApplicationMapper::toResponse)
                 .toList();
 
         return new JobApplicationResponse(
@@ -28,6 +25,14 @@ public final class JobApplicationMapper {
                 application.getResumeUrl(),
                 application.getCompanyUrl(),
                 interviews
+        );
+    }
+
+    public static InterviewResponse toResponse(Interview interview) {
+        return new InterviewResponse(
+                interview.getId(),
+                interview.getScheduledAt(),
+                interview.getNotes()
         );
     }
 }

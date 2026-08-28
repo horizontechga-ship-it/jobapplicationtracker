@@ -136,5 +136,31 @@ public class JobApplicationService {
         return JobApplicationMapper.toResponse(application);
     }
 
+    @Transactional
+    public void deleteInterview(
+            Long applicationId,
+            Long interviewId) {
+
+        var application = repository.findById(applicationId)
+                .orElseThrow(() ->
+                        new JobApplicationNotFoundException(applicationId));
+
+        var interview = application.getInterviews()
+                .stream()
+                .filter(existingInterview ->
+                        Objects.equals(
+                                existingInterview.getId(),
+                                interviewId
+                        ))
+                .findFirst()
+                .orElseThrow(() ->
+                        new InterviewNotFoundException(
+                                applicationId,
+                                interviewId
+                        ));
+
+        application.removeInterview(interview);
+    }
+
 
 }

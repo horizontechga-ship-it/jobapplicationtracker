@@ -70,4 +70,16 @@ public class JobApplicationController {
                 request
         );
     }
+
+    @DeleteMapping("/{applicationId}/interviews/{interviewId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteInterview(
+            @PathVariable Long applicationId,
+            @PathVariable Long interviewId) {
+
+        service.deleteInterview(
+                applicationId,
+                interviewId
+        );
+    }
 }

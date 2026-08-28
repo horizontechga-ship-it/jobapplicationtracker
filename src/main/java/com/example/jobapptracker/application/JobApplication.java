@@ -80,4 +80,8 @@ public class JobApplication {
     public void addInterview(Interview interview) {
         interviews.add(interview);
     }
+
+    public void removeInterview(Interview interview) {
+        interviews.remove(interview);
+    }
 }

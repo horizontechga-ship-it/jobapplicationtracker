@@ -137,7 +137,12 @@ Invoke-RestMethod `
     -Body $body |
     ConvertTo-Json -Depth 10
 ```
-
+## DELETE Interview Request
+```powershell
+Invoke-RestMethod `
+    -Uri "http://localhost:8080/applications/3/interviews/2" `
+    -Method Delete
+```
 
 ## THROW 400 exception with JSON response
 ```powershell

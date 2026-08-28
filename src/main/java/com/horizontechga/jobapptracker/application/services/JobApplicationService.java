@@ -1,16 +1,15 @@
-package com.example.jobapptracker.application.services;
+package com.horizontechga.jobapptracker.application.services;
 
-import com.example.jobapptracker.application.Interview;
+import com.horizontechga.jobapptracker.application.Interview;
 import com.example.jobapptracker.application.dto.*;
-import com.example.jobapptracker.application.JobApplication;
-import com.example.jobapptracker.application.JobApplicationRepository;
-import com.example.jobapptracker.application.JobApplicationMapper;
-import com.example.jobapptracker.exceptions.InterviewNotFoundException;
-import com.example.jobapptracker.exceptions.JobApplicationNotFoundException;
+import com.horizontechga.jobapptracker.application.JobApplication;
+import com.horizontechga.jobapptracker.application.JobApplicationRepository;
+import com.horizontechga.jobapptracker.application.JobApplicationMapper;
+import com.horizontechga.jobapptracker.application.dto.*;
+import com.horizontechga.jobapptracker.exceptions.InterviewNotFoundException;
+import com.horizontechga.jobapptracker.exceptions.JobApplicationNotFoundException;
 import jakarta.transaction.Transactional;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.List;
 import java.util.Objects;

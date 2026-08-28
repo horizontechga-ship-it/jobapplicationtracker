@@ -1,4 +1,4 @@
-package com.example.jobapptracker.application.dto;
+package com.horizontechga.jobapptracker.application.dto;
 
 
 import java.time.LocalDateTime;

@@ -1,4 +1,4 @@
-package com.example.jobapptracker.application;
+package com.horizontechga.jobapptracker.application;
 
 import jakarta.persistence.*;
 

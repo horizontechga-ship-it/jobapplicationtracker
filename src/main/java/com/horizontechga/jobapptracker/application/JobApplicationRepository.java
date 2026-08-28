@@ -1,4 +1,4 @@
-package com.example.jobapptracker.application;
+package com.horizontechga.jobapptracker.application;
 
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;

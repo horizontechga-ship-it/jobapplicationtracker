@@ -1,8 +1,9 @@
-package com.example.jobapptracker.application;
+package com.horizontechga.jobapptracker.application;
 
 
 import com.example.jobapptracker.application.dto.*;
-import com.example.jobapptracker.application.services.JobApplicationService;
+import com.horizontechga.jobapptracker.application.dto.*;
+import com.horizontechga.jobapptracker.application.services.JobApplicationService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

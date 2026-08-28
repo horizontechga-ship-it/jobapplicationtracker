@@ -1,4 +1,4 @@
-package com.example.jobapptracker;
+package com.horizontechga.jobapptracker;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

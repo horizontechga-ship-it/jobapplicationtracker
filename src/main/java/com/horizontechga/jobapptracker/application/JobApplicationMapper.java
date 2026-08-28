@@ -1,7 +1,7 @@
-package com.example.jobapptracker.application;
+package com.horizontechga.jobapptracker.application;
 
-import com.example.jobapptracker.application.dto.InterviewResponse;
-import com.example.jobapptracker.application.dto.JobApplicationResponse;
+import com.horizontechga.jobapptracker.application.dto.InterviewResponse;
+import com.horizontechga.jobapptracker.application.dto.JobApplicationResponse;
 
 public final class JobApplicationMapper {
 

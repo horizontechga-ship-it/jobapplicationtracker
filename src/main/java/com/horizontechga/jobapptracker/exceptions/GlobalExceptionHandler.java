@@ -1,4 +1,4 @@
-package com.example.jobapptracker.exceptions;
+package com.horizontechga.jobapptracker.exceptions;
 
 
 import org.springframework.http.HttpStatus;

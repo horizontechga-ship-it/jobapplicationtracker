@@ -1,7 +1,6 @@
 package com.horizontechga.jobapptracker.application;
 
 
-import com.example.jobapptracker.application.dto.*;
 import com.horizontechga.jobapptracker.application.dto.*;
 import com.horizontechga.jobapptracker.application.services.JobApplicationService;
 import jakarta.validation.Valid;

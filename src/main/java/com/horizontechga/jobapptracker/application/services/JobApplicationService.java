@@ -1,7 +1,7 @@
 package com.horizontechga.jobapptracker.application.services;
 
 import com.horizontechga.jobapptracker.application.Interview;
-import com.example.jobapptracker.application.dto.*;
+import com.horizontechga.jobapptracker.application.dto.*;
 import com.horizontechga.jobapptracker.application.JobApplication;
 import com.horizontechga.jobapptracker.application.JobApplicationRepository;
 import com.horizontechga.jobapptracker.application.JobApplicationMapper;

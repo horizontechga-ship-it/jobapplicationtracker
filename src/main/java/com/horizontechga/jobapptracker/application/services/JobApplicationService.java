@@ -5,7 +5,7 @@ import com.horizontechga.jobapptracker.application.dto.*;
 import com.horizontechga.jobapptracker.application.JobApplication;
 import com.horizontechga.jobapptracker.application.JobApplicationRepository;
 import com.horizontechga.jobapptracker.application.JobApplicationMapper;
-import com.horizontechga.jobapptracker.application.dto.*;
+
 import com.horizontechga.jobapptracker.exceptions.InterviewNotFoundException;
 import com.horizontechga.jobapptracker.exceptions.JobApplicationNotFoundException;
 import jakarta.transaction.Transactional;
